@@ -1,0 +1,83 @@
+﻿@using TipCalculator.Models
+@model CalculatorModel
+
+@{
+    ViewBag.Title = "Tip Calculator";
+}
+
+<style>
+
+
+</style>
+
+<div class="jumbotron">
+    <h3>Multi-Person Tip Calculator</h3>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.Label("Number of Guest") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.TextBoxFor(m => m.NumGuest, new { style = "width:40px;" })
+            @Html.ValidationMessageFor(m => m.NumGuest)
+            <br />
+        </div>
+        <div>
+            @Html.Label("Bill Total") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
+            @Html.TextBoxFor(m => m.BillTotal, new { style = "width:70px;" })
+            @Html.ValidationMessageFor(m => m.BillTotal)
+            <br />
+        </div>
+        <div>
+            @Html.Label("Bill Deductions") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
+            @Html.TextBoxFor(m => m.BillDeduct, new { style = "width:70px;" })
+            @Html.ValidationMessageFor(m => m.BillDeduct)
+            <br />
+        </div>
+        <div>
+            @Html.Label("Taxes") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
+            @Html.TextBoxFor(m => m.Taxes, new { style = "width:70px;" })
+            @Html.ValidationMessageFor(m => m.Taxes)
+            <br />
+        </div>
+        <div>
+            @Html.Label("Tip Rate") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.TextBoxFor(m => m.TipRate, new { style = "width:50px;" })&nbsp;&nbsp;%
+            @Html.ValidationMessageFor(m => m.TipRate)
+            <br />
+        </div>
+        <div>
+            @Html.Label("Total Tip") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
+            @Html.DisplayFor(m => m.TotalTip)
+            @Html.ValidationMessageFor(m => m.TotalTip)
+            <br />
+        </div>
+        <div>
+            @Html.Label("Per Person Tip") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
+            @Html.DisplayFor(m => m.PerPerson)
+            @Html.ValidationMessageFor(m => m.PerPerson)
+            <br />
+        </div>
+        <div class="currency">
+            @Html.Label("Total (Bill and Tip)") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
+            @Html.DisplayFor(m => m.TotalCost)
+            @Html.ValidationMessageFor(m => m.TotalCost)
+        </div>
+        <div>
+            @Html.Label("Include Taxes In Tip")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.RadioButtonFor(m => m.IncludeTax, true)Yes
+            @Html.RadioButtonFor(m => m.IncludeTax, false)No
+
+        </div>
+        <div>
+            @Html.Label("Include Deductions In Tip")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.RadioButtonFor(m => m.IncludeDeduct, true)Yes
+            @Html.RadioButtonFor(m => m.IncludeDeduct, false)No
+        </div> 
+        <div>
+            <br /><br />
+            <input class="btn btn-primary" type="submit" value="Calculate" />
+        </div>
+
+    }
+</div>
+
